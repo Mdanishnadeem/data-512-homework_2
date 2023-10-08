@@ -5,7 +5,7 @@ The goal of this project is to analyse the monthly trends of different articles 
 
 The dataset is available on https://docs.google.com/spreadsheets/d/1A1h_7KAo7KXaVxdScJmIVPTvjb3IuY9oZhNV4ZHxrxw/edit#gid=1229854301
 
-The API is developed by Dr. David W. McDonald(following four cells are from here). This code is provided under the Creative Commons CC-BY license. Revision 1.2 - August 14, 2023
+The method to call API is developed by Dr. David W. McDonald(following four cells are from here). This code is provided under the Creative Commons CC-BY license. Revision 1.2 - August 14, 2023
 The API documentation, pageviews/per-article, covers additional details that may be helpful when trying to use or understand this example.
 
 The API request will be made using one procedure. The idea is to make this reusable. The procedure is parameterized, but relies on the constants above for the important parameters. The underlying assumption is that this will be used to request data for a set of article pages. Therefore the parameter most likely to change is the article_title.
