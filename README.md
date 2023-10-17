@@ -1,60 +1,49 @@
-# data-512-homework_1
-Reproducibility Homework Data 512 
+# data-512-homework_2
+Analysis
 
-The goal of this project is to analyse the monthly trends of different articles views on wikipedia based on mobile (divided into application and web) and desktop access.
+01_Scraping_HW2.ipynb: Does the initial scraping by getting info of the different pages provided to it
 
-The dataset is available on https://docs.google.com/spreadsheets/d/1A1h_7KAo7KXaVxdScJmIVPTvjb3IuY9oZhNV4ZHxrxw/edit#gid=1229854301
+02_Scraping_ORES_HW2.ipynb: Gets the category of the article quality using the lastrevid of each article 
 
-The method to call API is developed by Dr. David W. McDonald(following four cells are from here). This code is provided under the Creative Commons CC-BY license. Revision 1.2 - August 14, 2023
-The API documentation, pageviews/per-article, covers additional details that may be helpful when trying to use or understand this example.
+1. FA - Featured article
+2. GA - Good article (sometimes called A-class)
+3. B - B-class article
+4. C - C-class article
+5. Start - Start-class article
+6. Stub - Stub-class article
 
-The API request will be made using one procedure. The idea is to make this reusable. The procedure is parameterized, but relies on the constants above for the important parameters. The underlying assumption is that this will be used to request data for a set of article pages. Therefore the parameter most likely to change is the article_title.
-Note that this is slightly modified to automate introducing device_type as the function parameter. 
+03_Joining_Data.ipynb: It joins all of the data sources we have primarily the data coming from the first and second notebook with the population and regional division files.
 
-I have accessed the data in three different ways 
-1. For Desktop
-2. For Mobile-Web
-3. For Mobile-App
+04_Results.ipynb: This produces embeded tables for all of the required questions 
 
-After extracting this data it was converted into json files and mobile web and mobile app were combined into one json file to retrieve the total views through mobile. Moreover, another json file was created which had views of desktop, mobile-web and mobile-app all combined into one. 
+All of the data used in this analysis is available in this repository
 
-The json file could be found under the following naming conventions. 
-1. academy_monthly_cummulative_<start201501>-<end202309>.json
-2. academy_monthly_desktop_<start201501>-<end202309>.json
-3. academy_monthly_mobile_<start201501>-<end202309>.json
+DATA 
 
-Once these files were created the cummulative json file was converted into a dataframe. The dataframe has the following columns 
+1. page_record.csv: this is the processed output of the first jupyter notebook
+2. record.json: contains all the scrapped records in raw form
+3. ores_predictions.csv: this is the processed output of the second jupyter notebook
+4. ORES.json: contains all the scrapped records from second jupyter notebook in raw form
+5. join_with_states.csv: this is a temporary file and contains joins of page_record and ores_predictions with states
+6. wp_scored_city_articles_by_state.csv: this is the final cleaned output file which contains output in the desired format
 
 
-1. **project**: This column represents the Wikipedia project or language edition. In our case, it is "en.wikipedia," indicating the English-language Wikipedia.
 
-2. **article**: This column represents the name or title of the Wikipedia article being analyzed
-   
-4. **granularity**: This column specifys the time granularity at which the data is recorded. In our case, it is "monthly," indicating that the data is aggregated on a monthly basis.
+### RESEARCH IMPLICATIONS 
 
-5. **timestamp**: This column represents the timestamp of the data. It is formatted as "YYYYMMDD00," where YYYY is the year, MM is the month, DD is the day, and 00 is presumably the hour (though it is constant at 00).
+From my analysis I have found out that the state with the highest good quality articles per capita is South Dakota. Whereas the division with the highest good quality articles per capita is New England and South Dakota is not a part of New England. This was particularly surprising for me. Moreover the highest number of articles per capita were also from South Dakota this is consistent with having the highest quality articles however surprising as well because even though they had the highest number they had the best quality as well
 
-6. **access_app**: This column indicates the method of access to the Wikipedia article through a mobile app, such as the Wikipedia mobile app. 
+What biases did you expect to find in the data (before you started working with it), and why?
 
-7. **access_web**: Similar to the previous column, this one specifies the method of access, but for web access. It specifies "mobile-web," conveying access through a mobile web browser.
+Before working with Wikipedia data, I expected biases because of the nature of Wikipedia's content generation. Wikipedia is created and edited by volunteers, and as such, biases may arise based on the interests, expertise, and perspectives of those contributors.
+Sources of bias can include underrepresentation of certain topics or regions, systemic bias related to gender, ethnicity, and cultural perspectives, and uneven coverage of notable versus non-notable subjects.
 
-8. **agent**: This column represents the user agent or type of user accessing the article. 
 
-9. **views_app**: This column contains the number of page views for the Wikipedia article via the mobile app during the specified time period (monthly).
+What might your results suggest about (English) Wikipedia as a data source?
 
-10. **views_web**: Similar to the previous column, this one contains the number of page views, but specifically for web access through a mobile web browser.
+Wikipedia is a valuable but imperfect data source. Its reliability and completeness can vary significantly across topics. The biases observed may limit its suitability for some research questions or applications.
 
-11. **total_views**: This column contain the total number of page views for the Wikipedia article, which is calculated as the sum of views from mobile app, mobile web access and desktop.
+What (potential) sources of bias did you discover in the course of your data processing and analysis?
 
-12. **access_desktop**: This column specifies the method of access for desktop users
+I discovered during my analysis that some of the regions were covered more as compared to the other regions
 
-13. **views_desktop**: This column contains the number of page views for the Wikipedia article via desktop access during the specified time period.
-
-14. **views_mobile**: This column contains the number of page views for the Wikipedia article via mobile access, which is likely calculated as the sum of views from both mobile app and mobile web access.
-
-Each row in the DataFrame represents data for a specific time period (monthly) and provides information about page views for the specified Wikipedia article, differentiating between mobile app, mobile web, and desktop access, as well as providing total views. The "timestamp" column indicates the time period to which the data corresponds.
-
-In the end I have created three visualisations which are as follows 
-1. Plotted a timeseries graph for articles which has the highest and lowest monthly average views.
-2. x
-3. This graph picks 10 articles with least data available in terms of months and plots their views for mobile and desktop. 
