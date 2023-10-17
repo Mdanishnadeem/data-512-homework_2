@@ -1,11 +1,9 @@
 # data-512-homework_2
 Analysis
 
-01_Scraping_HW2.ipynb
-Does the initial scraping by getting info of the different pages provided to it
+01_Scraping_HW2.ipynb: Does the initial scraping by getting info of the different pages provided to it
 
-02_Scraping_ORES_HW2.ipynb
-Gets the category of the article quality using the lastrevid of each article 
+02_Scraping_ORES_HW2.ipynb: Gets the category of the article quality using the lastrevid of each article 
 
 1. FA - Featured article
 2. GA - Good article (sometimes called A-class)
@@ -14,11 +12,9 @@ Gets the category of the article quality using the lastrevid of each article
 5. Start - Start-class article
 6. Stub - Stub-class article
 
-03_Joining_Data.ipynb
-It joins all of the data sources we have primarily the data coming from the first and second notebook with the population and regional division files.
+03_Joining_Data.ipynb: It joins all of the data sources we have primarily the data coming from the first and second notebook with the population and regional division files.
 
-04_Results.ipynb
-This produces embeded tables for all of the required questions 
+04_Results.ipynb: This produces embeded tables for all of the required questions 
 
 All of the data used in this analysis is available in this repository
 
